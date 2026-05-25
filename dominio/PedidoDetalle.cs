@@ -1,0 +1,13 @@
+namespace dominio
+{
+    public class PedidoDetalle
+    {
+        public int Id { get; set; }
+        public int IdPedido { get; set; }
+        public int IdInsumo { get; set; }
+        public string Insumo { get; set; }
+        public int Cantidad { get; set; }
+        public decimal PrecioUnitario { get; set; }
+        public decimal Subtotal { get; set; }
+    }
+}

@@ -57,3 +57,7 @@ C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\Re
 C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\RestoBar_equipo-19\resto-bar-web\obj\Debug\resto-ba.6142EBC6.Up2Date
 C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\RestoBar_equipo-19\resto-bar-web\obj\Debug\resto-bar-web.dll
 C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\RestoBar_equipo-19\resto-bar-web\obj\Debug\resto-bar-web.pdb
+C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\RestoBar_equipo-19\resto-bar-web\bin\dominio.dll
+C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\RestoBar_equipo-19\resto-bar-web\bin\negocio.dll
+C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\RestoBar_equipo-19\resto-bar-web\bin\negocio.pdb
+C:\utils\Education\utn\tup\segundo_anio\programacion_3\tp_grupal\tp2-webforms\RestoBar_equipo-19\resto-bar-web\bin\dominio.pdb

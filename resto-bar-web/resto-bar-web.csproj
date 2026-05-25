@@ -101,8 +101,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dominio\" />
-    <Folder Include="negocio\" />
+    <ProjectReference Include="..\negocio\negocio.csproj">
+      <Project>{932c7558-f762-46c9-bea1-fea92615bf46}</Project>
+      <Name>negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{c590e416-a08f-405a-b183-496f19cb2fbc}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

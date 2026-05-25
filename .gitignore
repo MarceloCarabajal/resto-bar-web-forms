@@ -1,0 +1,40 @@
+## Visual Studio / ASP.NET WebForms
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Build
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Ll]og/
+[Ll]ogs/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]64/
+
+# NuGet (restaurar con Visual Studio)
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nupkg
+
+# Publish / local
+*.pubxml
+*.publishproj
+PublishScripts/
+
+# SQL local
+*.mdf
+*.ldf
+
+# Otros
+_ReSharper*/
+*.DotSettings.user
+node_modules/
+.env
+*.env
