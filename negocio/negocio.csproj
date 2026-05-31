@@ -36,7 +36,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="InsumoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{c590e416-a08f-405a-b183-496f19cb2fbc}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <!-- Referencia a dominio: agregar cuando exista la primera clase *Negocio (Melanie / Etapa 1B) -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

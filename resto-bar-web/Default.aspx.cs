@@ -11,6 +11,25 @@ namespace resto_bar_web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                try
+                {
+
+                    negocio.InsumoNegocio negocioInsumo = new negocio.InsumoNegocio();
+
+
+                    dgvInsumos.DataSource = negocioInsumo.listar();
+
+
+                    dgvInsumos.DataBind();
+                }
+                catch (Exception ex)
+                {
+
+                    Session.Add("error", ex.ToString());
+                }
+            }
 
         }
     }
