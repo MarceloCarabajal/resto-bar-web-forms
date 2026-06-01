@@ -9,7 +9,8 @@
 
 namespace resto_bar_web
 {
-    public partial class Default
+    public partial class InsumosLista
     {
+        protected global::System.Web.UI.WebControls.GridView dgvInsumos;
     }
 }
