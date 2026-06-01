@@ -1,5 +1,7 @@
 ## Visual Studio / ASP.NET WebForms
 .vs/
+**/.vs/
+*.dtbcache.json
 *.suo
 *.user
 *.userosscache

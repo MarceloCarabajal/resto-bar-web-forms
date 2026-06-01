@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="InsumosLista.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MesasPedidos.aspx" />
     <Content Include="Reportes.aspx" />
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InsumosLista.aspx.cs">
+      <DependentUpon>InsumosLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsumosLista.aspx.designer.cs">
+      <DependentUpon>InsumosLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
