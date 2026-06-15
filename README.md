@@ -95,4 +95,4 @@ RestoBar_equipo-19/
 
 ## Equipo 19
 
-Marcelo Carabajal · Ferdinando · Melanie
+Marcelo Carabajal · Ferdinando Pedrini · Melanie Hernández
