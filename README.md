@@ -69,13 +69,14 @@ RestoBar_equipo-19/
 
 1. Clonar el repositorio.
 2. En SSMS, ejecutar `scripts/RESTO_BAR_DB_v1.sql`.
-3. En `resto-bar-web/Web.config`, configurar la instancia SQL:
+3. Desde Etapa 2, ejecutar también `scripts/RESTO_BAR_DB_v2_etapa2.sql`.
+4. En `resto-bar-web/Web.config`, configurar la instancia SQL:
 
 ```xml
 <add key="cadenaConexion" value="Data Source=.\SQLEXPRESS;Initial Catalog=RESTO_BAR_DB;Integrated Security=True" />
 ```
 
-4. Abrir `RestoBar_equipo-19.sln` y compilar (F6).
+4. Abrir `RestoBar_equipo-19.sln`, Restore NuGet y compilar (Rebuild).
 5. Establecer `resto-bar-web` como proyecto de inicio y ejecutar (F5).
 
 **Usuarios de prueba** (después del script): `gerente` / `mesero1` / `mesero2` — clave `123456`.
@@ -88,6 +89,7 @@ RestoBar_equipo-19/
 |-----------|-----------|
 | [docs/EQUIPO.md](docs/EQUIPO.md) | División de tareas, etapas del TPC, ramas Git |
 | [docs/REFERENCIA.md](docs/REFERENCIA.md) | Pantallas, SP, tablas y Session |
+| [docs/JIRA_EPIC2.md](docs/JIRA_EPIC2.md) | Tareas Jira Etapa 2 (3 ABM E2E) |
 
 ---
 

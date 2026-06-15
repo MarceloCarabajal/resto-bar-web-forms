@@ -4,61 +4,84 @@
 
 ---
 
-## Reglas (3 líneas)
+## Reglas de trabajo
 
-1. En cada etapa los **tres** programamos en `dominio`, `negocio` y `resto-bar-web` (mínimo un archivo por capa).
-2. Cada bloque tiene un **coordinador** (integra el PR); no es el único que codea.
-3. `main` siempre tiene que **compilar** antes del merge.
+1. **Dueño del bloque** = hace dominio + negocio + web + SQL (si aplica) de **su** módulo y abre el PR.
+2. Los otros **dos revisan** el PR antes del merge.
+3. Cada entrega debe **compilar y demostrarse** antes de mergear a `master`.
+4. `master` siempre tiene que **compilar** antes del merge.
 
 **Ramas:** `feature/etapa{N}-{nombre}-{tema}` → PR → revisión de los otros dos → merge.
+
+**Orden de merge Etapa 2:** TipoInsumo → Insumos → Usuarios (dropdown de tipos).
 
 ---
 
 ## Tablero — quién lidera qué
 
-Marcar con ✅ en el grupo cuando esté mergeado a `main`.
+Marcar con ✅ en el grupo cuando esté mergeado a `master`.
 
-### Etapa 1 — Dominio, SQL, maquetado, 1 listado BD
+### Etapa 1 — Dominio, SQL, maquetado, 1 listado BD ✅
 
 | | Marcelo | Melanie | Ferdinando |
 |---|---------|---------|------------|
 | **Lidera** | Dominio + SQL + AccesoDatos | `InsumosLista` + GridView | Páginas shell + menú |
-| **Rama** | `feature/etapa1-marcelo-dominio-acceso` | `feature/etapa1-melanie-listado-insumos` | `feature/etapa1-ferdinando-maquetado` |
-| **Estado** | ☐ | ☐ | ☐ |
-
-**Merge:** Marcelo → Melanie → Ferdinando (Ferdinando puede ir en paralelo con Melanie).
+| **Estado** | ✅ | ✅ | ✅ |
 
 **Cerrada cuando:** compila, SQL ejecutado en los 3 PCs, se listan insumos desde BD, se navega entre páginas.
 
 ---
 
-### Etapa 2 — ABM Insumos (sin pedidos)
+### Etapa 1B — Refactor dominio (feedback profesor)
 
-| | Marcelo | Melanie | Ferdinando |
-|---|---------|---------|------------|
-| **Lidera** | `InsumoNegocio` CRUD | Editar / inactivar UI | `InsumoForm` alta + validators |
-| **Rama** | `feature/etapa2-marcelo-insumo-negocio` | `feature/etapa2-melanie-insumo-editar` | `feature/etapa2-ferdinando-insumo-alta` |
+| | Marcelo | Ferdinando | Melanie |
+|---|---------|------------|---------|
+| **Lidera** | Clases dominio composición | `InsumoNegocio` + GridView | Documentación |
 | **Estado** | ☐ | ☐ | ☐ |
 
-**No hacer aún:** pedidos, asignación mesas, login, reportes.
+Composición: `Insumo.TipoInsumo`, `Pedido.Items`, `Usuario.Rol`, `ItemPedido` (sin `PedidoDetalle.cs`).
 
 ---
 
-### Etapa 3 — Login, mesas, pedidos
+### Etapa 2 — 3 ABM completos (uno por integrante)
+
+Cada integrante entrega **un ABM de punta a punta**: dominio → `*Negocio` → Lista + Form → validators → PR → demo.
+
+| | Marcelo | Ferdinando | Melanie |
+|---|---------|------------|---------|
+| **ABM** | **Insumos** | **TipoInsumo** | **Usuarios** |
+| **Negocio** | `InsumoNegocio` | `TipoInsumoNegocio` | `UsuarioNegocio` |
+| **Pantallas** | `InsumosLista` + `InsumoForm` | `TiposInsumoLista` + `TipoInsumoForm` | `UsuariosLista` + `UsuarioForm` |
+| **SQL** | SPs en v1 (ya existen) | `scripts/RESTO_BAR_DB_v2_etapa2.sql` | `scripts/RESTO_BAR_DB_v2_etapa2.sql` |
+| **Rama** | `feature/etapa2-marcelo-abm-insumos` | `feature/etapa2-ferdinando-abm-tipo-insumo` | `feature/etapa2-melanie-abm-usuarios` |
+| **Estado** | ☐ | ☐ | ☐ |
+
+**No hacer aún:** pedidos, asignación mesas, login funcional, reportes.
+
+**Cerrada cuando:** los 3 ABM funcionan en los 3 PCs; gerente navega Insumos, Tipos de insumo y Usuarios.
+
+Detalle Jira: [JIRA_EPIC2.md](JIRA_EPIC2.md)
+
+---
+
+### Etapa 3 — Módulos verticales (punta a punta)
 
 | | Marcelo | Melanie | Ferdinando |
 |---|---------|---------|------------|
-| **Lidera** | Asignación mesas | Login + roles + Session | Pedidos abrir/cerrar |
+| **Lidera** | Asignación mesas | Login + Session + roles | Pedidos abrir/cerrar |
+| **Pantallas** | `MesasAsignacion.aspx` | `Login.aspx` + protección | `MesasPedidos.aspx` + `PedidoDetalle.aspx` |
 | **Rama** | `feature/etapa3-marcelo-asignacion` | `feature/etapa3-melanie-login` | `feature/etapa3-ferdinando-pedidos` |
 | **Estado** | ☐ | ☐ | ☐ |
 
+Melanie extiende `UsuarioNegocio` (Etapa 2) con `login()` — no empieza de cero.
+
 ---
 
-### Etapa final — Reportes y cierre
+### Etapa final — 2 módulos por integrante
 
 | | Marcelo | Melanie | Ferdinando |
 |---|---------|---------|------------|
-| **Lidera** | Reportes | Pruebas roles + Bootstrap | Validators en todos los forms |
+| **Lidera** | Reportes | Menú dinámico + UI Bootstrap | Validators en todos los forms |
 | **Rama** | `feature/final-marcelo-reportes` | `feature/final-melanie-ui-roles` | `feature/final-ferdinando-validaciones` |
 | **Estado** | ☐ | ☐ | ☐ |
 
@@ -69,31 +92,34 @@ Marcar con ✅ en el grupo cuando esté mergeado a `main`.
 | Etapa | Entrega oficial | En Resto BAR |
 |-------|-----------------|--------------|
 | **1** | Clases + pantallas + navegación + **1 lectura BD** | Dominio, Master, shells, listado insumos |
-| **2** | ABM entidades administrables, **sin** núcleo | Solo ABM insumos |
+| **2** | ABM entidades administrables, **sin** núcleo | ABM Insumos + TipoInsumo + Usuarios (1 c/u) |
 | **3** | Funcionalidad central + validaciones | Login, asignación, pedidos |
 | **Final** | Todo cerrado + perfiles + diseño | Reportes + validar todo + UI |
 
 ---
 
-## Etapa 1 — Detalle por integrante
+## Etapa 2 — Checklist por ABM
 
-### Marcelo
-- [x] `dominio/` (entidades)
-- [x] `negocio/AccesoDatos.cs`
-- [x] `scripts/RESTO_BAR_DB_v1.sql`
-- [x] Proyectos en `.sln` + `Web.config` (`cadenaConexion`)
+### Marcelo — ABM Insumos
+- [ ] `InsumoNegocio`: listar, obtener, agregar, modificar, inactivar, listarTipos (SP)
+- [ ] `InsumosLista.aspx` — editar / inactivar
+- [ ] `InsumoForm.aspx` — alta y edición + validators
+- [ ] Link en menú (Gerente)
+- [ ] PR + demo
 
-### Melanie
-- [ ] `InsumoNegocio.Listar()`
-- [ ] `InsumosLista.aspx` + `GridView` (`sp_listar_insumos`)
-- [ ] Referencia `negocio` → `dominio` en `.csproj`
+### Ferdinando — ABM TipoInsumo
+- [ ] Ejecutar `RESTO_BAR_DB_v2_etapa2.sql` (SPs tipos)
+- [ ] `TipoInsumoNegocio` — CRUD completo
+- [ ] `TiposInsumoLista.aspx` + `TipoInsumoForm.aspx` + validators
+- [ ] Link en menú (Gerente)
+- [ ] PR + demo
 
-### Ferdinando
-- [ ] `Login.aspx`, `MesasPedidos.aspx`, `Reportes.aspx` (vacías)
-- [ ] Links en `MasterPage.Master`
-- [ ] Navegación entre páginas
-
-**Todos:** ejecutar el script SQL en tu SQL Server local.
+### Melanie — ABM Usuarios
+- [ ] Ejecutar `RESTO_BAR_DB_v2_etapa2.sql` (SPs usuarios)
+- [ ] `UsuarioNegocio` — listar, obtener, agregar, modificar, inactivar, listarRoles
+- [ ] `UsuariosLista.aspx` + `UsuarioForm.aspx` + validators
+- [ ] Link en menú (Gerente)
+- [ ] PR + demo
 
 ---
 
@@ -101,28 +127,20 @@ Marcar con ✅ en el grupo cuando esté mergeado a `main`.
 
 - [ ] Compilé en Debug
 - [ ] Trabajé en mi rama `feature/...`
-- [ ] Tocé dominio, negocio y web (aunque sea poco)
+- [ ] Mi ABM/módulo funciona de punta a punta
 - [ ] Avisé si modifiqué `.sln`, `Web.config` o `MasterPage.Master`
-
----
-
-## 1ª reunión (30 min)
-
-1. Confirmar tablero Etapa 1 y quién abre cada rama hoy.
-2. Ejecutar `scripts/RESTO_BAR_DB_v1.sql` juntos (o compartir instancia).
-3. Probar login de prueba: `gerente` / `123456` (cuando exista Login).
-4. Acordar día de sync semanal y canal (WhatsApp / Discord).
 
 ---
 
 ## Setup rápido (nuevo en el repo)
 
 ```
-git pull origin main
+git pull origin master
 → Ejecutar scripts/RESTO_BAR_DB_v1.sql
+→ Ejecutar scripts/RESTO_BAR_DB_v2_etapa2.sql (desde Etapa 2)
 → Abrir RestoBar_equipo-19.sln
 → Ajustar cadenaConexion en Web.config
-→ Compilar
+→ Restore NuGet + Rebuild
 ```
 
 Detalle técnico: [REFERENCIA.md](REFERENCIA.md)
