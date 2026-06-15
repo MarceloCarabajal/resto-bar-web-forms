@@ -10,11 +10,10 @@ namespace dominio
         [DisplayName("Nombre")]
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public int IdRol { get; set; }
-        public string RolNombre { get; set; }
+        public Rol Rol { get; set; }
         public bool Activo { get; set; }
 
-        public bool EsGerente => RolNombre == "Gerente";
-        public bool EsMesero => RolNombre == "Mesero";
+        public bool EsGerente => Rol != null && Rol.Nombre == "Gerente";
+        public bool EsMesero => Rol != null && Rol.Nombre == "Mesero";
     }
 }

@@ -36,9 +36,11 @@
   <ItemGroup>
     <Compile Include="Elemento.cs" />
     <Compile Include="Insumo.cs" />
+    <Compile Include="ItemPedido.cs" />
     <Compile Include="Mesa.cs" />
     <Compile Include="Pedido.cs" />
-    <Compile Include="PedidoDetalle.cs" />
+    <Compile Include="Rol.cs" />
+    <Compile Include="TipoInsumo.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
