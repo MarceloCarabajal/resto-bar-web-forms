@@ -6,5 +6,17 @@
         <h1 class="h2">Insumos</h1>
         <p class="text-secondary mb-0">Catalogo de platos y bebidas (lectura desde base de datos).</p>
     </section>
-    <asp:GridView ID="dgvInsumos" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="True" />
+    <asp:GridView ID="dgvInsumos" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="Id" HeaderText="Id" />
+            <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+            <asp:TemplateField HeaderText="Tipo">
+                <ItemTemplate>
+                    <%# Eval("Tipo.Nombre") %>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:BoundField DataField="Precio" HeaderText="Precio" />
+            <asp:BoundField DataField="CantidadStock" HeaderText="Stock" />
+        </Columns>
+    </asp:GridView>
 </asp:Content>

@@ -16,9 +16,9 @@ namespace negocio
 
             try
             {
-                string consulta = "SELECT Id, Nombre, IdTipoInsumo, Precio, CantidadStock, Activo FROM Insumos WHERE Activo = 1";
-
-                datos.setearConsulta(consulta);
+                datos.setearProcedimiento("sp_listar_insumos");
+                datos.setearParametro("@SoloActivos", true);
+                datos.setearParametro("@ConStock", false);
                 datos.ejecutarLectura();
 
 
@@ -29,13 +29,12 @@ namespace negocio
                     
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.IdTipoInsumo = (int)datos.Lector["IdTipoInsumo"];
+                    aux.Tipo = new TipoInsumo();
+                    aux.Tipo.Id = (int)datos.Lector["IdTipoInsumo"];
+                    aux.Tipo.Nombre = (string)datos.Lector["Tipo"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
                     aux.CantidadStock = (int)datos.Lector["CantidadStock"];
                     aux.Activo = (bool)datos.Lector["Activo"];
-
-
-                    aux.Tipo = "Insumo";
 
                     lista.Add(aux);
                 }
