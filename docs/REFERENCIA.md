@@ -40,7 +40,7 @@ Consultar al programar. Organización del equipo: [EQUIPO.md](EQUIPO.md).
 | Usuarios / Roles | Login + ABM usuarios (Etapa 2) |
 | Insumos / TiposInsumo | Platos y bebidas + stock + ABM tipos (Etapa 2) |
 | Mesas / AsignacionesMesa | Mesero por mesa (vigente = hoy) |
-| Pedidos / PedidoDetalle | Abierto/Cerrado, ítems, total |
+| Pedidos / PedidoDetalle (tabla SQL) | Abierto/Cerrado, ítems, total — en dominio: `ItemPedido` dentro de `Pedido.Items` |
 
 ---
 
@@ -62,14 +62,31 @@ Consultar al programar. Organización del equipo: [EQUIPO.md](EQUIPO.md).
 
 ---
 
-## Dominio — composición (post Etapa 1B)
+## Dominio — composición (Etapa 1B, mergeado)
 
-| Clase | Composición |
-|-------|-------------|
-| `Insumo` | `TipoInsumo Tipo` |
-| `Pedido` | `List<ItemPedido> Items` |
-| `ItemPedido` | `Insumo Insumo` |
-| `Usuario` | `Rol Rol` |
+Patrón del curso (como `Pokemon.Tipo` en Pokedex): objetos compuestos, no IDs sueltos en la capa dominio.
+
+| Clase | Propiedades principales | Composición |
+|-------|-------------------------|-------------|
+| `TipoInsumo` | Id, Nombre | — |
+| `Insumo` | Id, Nombre, Precio, Stock, Activo | `TipoInsumo Tipo` |
+| `Rol` | Id, Nombre | — |
+| `Usuario` | UserName, Clave, Nombre, Apellido, Activo | `Rol Rol` |
+| `ItemPedido` | Cantidad, PrecioUnitario, Subtotal | `Insumo Insumo` |
+| `Pedido` | Mesa, mesero, fechas, Estado, Total | `List<ItemPedido> Items` |
+| `Mesa` | Numero, EstadoMesa, … | (Etapa 3: opcional `Usuario Mesero`) |
+| `Elemento` | Id, Descripcion | DropDownList genéricos |
+
+**Nota:** la tabla SQL sigue llamándose `PedidoDetalle`; la clase de dominio es `ItemPedido`. La página `PedidoDetalle.aspx` (Etapa 3) es solo nombre de pantalla.
+
+**Mapeo en negocio (ejemplo `InsumoNegocio.listar`):**
+```csharp
+aux.Tipo = new TipoInsumo();
+aux.Tipo.Id = (int)datos.Lector["IdTipoInsumo"];
+aux.Tipo.Nombre = (string)datos.Lector["Tipo"];
+```
+
+**GridView (`InsumosLista.aspx`):** `Eval("Tipo.Nombre")` en columna Tipo.
 
 `Elemento.cs` sigue para DropDownList genéricos si hace falta.
 

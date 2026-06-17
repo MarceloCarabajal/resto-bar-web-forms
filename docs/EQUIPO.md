@@ -2,6 +2,8 @@
 
 **Integrantes:** Marcelo · Ferdinando · Melanie
 
+Seguimiento de tareas y estados: **Jira** (este documento es solo referencia del equipo).
+
 ---
 
 ## Reglas de trabajo
@@ -17,18 +19,15 @@
 
 ---
 
-## Tablero — quién lidera qué
+## División por etapas
 
-Marcar con ✅ en el grupo cuando esté mergeado a `master`.
-
-### Etapa 1 — Dominio, SQL, maquetado, 1 listado BD ✅
+### Etapa 1 — Dominio, SQL, maquetado, 1 lectura BD
 
 | | Marcelo | Melanie | Ferdinando |
 |---|---------|---------|------------|
 | **Lidera** | Dominio + SQL + AccesoDatos | `InsumosLista` + GridView | Páginas shell + menú |
-| **Estado** | ✅ | ✅ | ✅ |
 
-**Cerrada cuando:** compila, SQL ejecutado en los 3 PCs, se listan insumos desde BD, se navega entre páginas.
+**Entrega:** compila, SQL ejecutado en los 3 PCs, se listan insumos desde BD, se navega entre páginas.
 
 ---
 
@@ -37,9 +36,14 @@ Marcar con ✅ en el grupo cuando esté mergeado a `master`.
 | | Marcelo | Ferdinando | Melanie |
 |---|---------|------------|---------|
 | **Lidera** | Clases dominio composición | `InsumoNegocio` + GridView | Documentación |
-| **Estado** | ☐ | ☐ | ☐ |
 
-Composición: `Insumo.TipoInsumo`, `Pedido.Items`, `Usuario.Rol`, `ItemPedido` (sin `PedidoDetalle.cs`).
+**Composición:** `Insumo.TipoInsumo`, `Pedido.Items`, `Usuario.Rol`, `ItemPedido` (sin `PedidoDetalle.cs` en dominio).
+
+**Entregables:**
+- PR dominio: `feature/etapa1b-dominio-composicion`
+- PR negocio + web: `feature/etapa1b-ferdinando-insumos-tipoinsumo`
+- `docs/REFERENCIA.md` — sección dominio composición
+- `InsumosLista` muestra `Tipo.Nombre` (Plato / Bebida) desde BD
 
 ---
 
@@ -49,18 +53,38 @@ Cada integrante entrega **un ABM de punta a punta**: dominio → `*Negocio` → 
 
 | | Marcelo | Ferdinando | Melanie |
 |---|---------|------------|---------|
-| **ABM** | **Insumos** | **TipoInsumo** | **Usuarios** |
+| **ABM** | Insumos | TipoInsumo | Usuarios |
 | **Negocio** | `InsumoNegocio` | `TipoInsumoNegocio` | `UsuarioNegocio` |
 | **Pantallas** | `InsumosLista` + `InsumoForm` | `TiposInsumoLista` + `TipoInsumoForm` | `UsuariosLista` + `UsuarioForm` |
-| **SQL** | SPs en v1 (ya existen) | `scripts/RESTO_BAR_DB_v2_etapa2.sql` | `scripts/RESTO_BAR_DB_v2_etapa2.sql` |
+| **SQL** | SPs en v1 | `RESTO_BAR_DB_v2_etapa2.sql` | `RESTO_BAR_DB_v2_etapa2.sql` |
 | **Rama** | `feature/etapa2-marcelo-abm-insumos` | `feature/etapa2-ferdinando-abm-tipo-insumo` | `feature/etapa2-melanie-abm-usuarios` |
-| **Estado** | ☐ | ☐ | ☐ |
 
-**No hacer aún:** pedidos, asignación mesas, login funcional, reportes.
+**Fuera de alcance:** pedidos, asignación mesas, login funcional, reportes.
 
-**Cerrada cuando:** los 3 ABM funcionan en los 3 PCs; gerente navega Insumos, Tipos de insumo y Usuarios.
+**Entrega:** los 3 ABM funcionan en los 3 PCs; gerente navega Insumos, Tipos de insumo y Usuarios.
 
-Detalle Jira: [JIRA_EPIC2.md](JIRA_EPIC2.md)
+Detalle para Jira: [JIRA_EPIC2.md](JIRA_EPIC2.md)
+
+#### Marcelo — ABM Insumos
+
+- `InsumoNegocio`: listar, obtener, agregar, modificar, inactivar, listarTipos (SP)
+- `InsumosLista.aspx` — editar / inactivar
+- `InsumoForm.aspx` — alta y edición + validators
+- Link en menú (Gerente)
+
+#### Ferdinando — ABM TipoInsumo
+
+- Ejecutar `RESTO_BAR_DB_v2_etapa2.sql` (SPs tipos)
+- `TipoInsumoNegocio` — CRUD completo
+- `TiposInsumoLista.aspx` + `TipoInsumoForm.aspx` + validators
+- Link en menú (Gerente)
+
+#### Melanie — ABM Usuarios
+
+- Ejecutar `RESTO_BAR_DB_v2_etapa2.sql` (SPs usuarios)
+- `UsuarioNegocio` — listar, obtener, agregar, modificar, inactivar, listarRoles
+- `UsuariosLista.aspx` + `UsuarioForm.aspx` + validators
+- Link en menú (Gerente)
 
 ---
 
@@ -71,7 +95,6 @@ Detalle Jira: [JIRA_EPIC2.md](JIRA_EPIC2.md)
 | **Lidera** | Asignación mesas | Login + Session + roles | Pedidos abrir/cerrar |
 | **Pantallas** | `MesasAsignacion.aspx` | `Login.aspx` + protección | `MesasPedidos.aspx` + `PedidoDetalle.aspx` |
 | **Rama** | `feature/etapa3-marcelo-asignacion` | `feature/etapa3-melanie-login` | `feature/etapa3-ferdinando-pedidos` |
-| **Estado** | ☐ | ☐ | ☐ |
 
 Melanie extiende `UsuarioNegocio` (Etapa 2) con `login()` — no empieza de cero.
 
@@ -83,7 +106,6 @@ Melanie extiende `UsuarioNegocio` (Etapa 2) con `login()` — no empieza de cero
 |---|---------|---------|------------|
 | **Lidera** | Reportes | Menú dinámico + UI Bootstrap | Validators en todos los forms |
 | **Rama** | `feature/final-marcelo-reportes` | `feature/final-melanie-ui-roles` | `feature/final-ferdinando-validaciones` |
-| **Estado** | ☐ | ☐ | ☐ |
 
 ---
 
@@ -98,37 +120,12 @@ Melanie extiende `UsuarioNegocio` (Etapa 2) con `login()` — no empieza de cero
 
 ---
 
-## Etapa 2 — Checklist por ABM
-
-### Marcelo — ABM Insumos
-- [ ] `InsumoNegocio`: listar, obtener, agregar, modificar, inactivar, listarTipos (SP)
-- [ ] `InsumosLista.aspx` — editar / inactivar
-- [ ] `InsumoForm.aspx` — alta y edición + validators
-- [ ] Link en menú (Gerente)
-- [ ] PR + demo
-
-### Ferdinando — ABM TipoInsumo
-- [ ] Ejecutar `RESTO_BAR_DB_v2_etapa2.sql` (SPs tipos)
-- [ ] `TipoInsumoNegocio` — CRUD completo
-- [ ] `TiposInsumoLista.aspx` + `TipoInsumoForm.aspx` + validators
-- [ ] Link en menú (Gerente)
-- [ ] PR + demo
-
-### Melanie — ABM Usuarios
-- [ ] Ejecutar `RESTO_BAR_DB_v2_etapa2.sql` (SPs usuarios)
-- [ ] `UsuarioNegocio` — listar, obtener, agregar, modificar, inactivar, listarRoles
-- [ ] `UsuariosLista.aspx` + `UsuarioForm.aspx` + validators
-- [ ] Link en menú (Gerente)
-- [ ] PR + demo
-
----
-
 ## Antes de cada PR
 
-- [ ] Compilé en Debug
-- [ ] Trabajé en mi rama `feature/...`
-- [ ] Mi ABM/módulo funciona de punta a punta
-- [ ] Avisé si modifiqué `.sln`, `Web.config` o `MasterPage.Master`
+1. Compilar en Debug.
+2. Trabajar en rama `feature/...`.
+3. El ABM o módulo debe funcionar de punta a punta.
+4. Avisar al grupo si se modificó `.sln`, `Web.config` o `MasterPage.Master`.
 
 ---
 
