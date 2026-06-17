@@ -28,6 +28,9 @@
                                 <a class="nav-link" href="InsumosLista.aspx">Insumos</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="TiposInsumoLista.aspx">Tipos de insumo</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="MesasPedidos.aspx">Mesas/Pedidos</a>
                             </li>
                             <li class="nav-item">
