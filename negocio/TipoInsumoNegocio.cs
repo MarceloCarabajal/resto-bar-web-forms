@@ -132,5 +132,25 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void activar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("sp_activar_tipo_insumo");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

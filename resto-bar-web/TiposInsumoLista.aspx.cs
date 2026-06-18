@@ -15,14 +15,19 @@ namespace resto_bar_web
 
         protected void dgvTiposInsumo_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName != "InactivarTipo")
+            if (e.CommandName != "InactivarTipo" && e.CommandName != "ActivarTipo")
                 return;
 
             try
             {
                 int id = int.Parse(e.CommandArgument.ToString());
                 TipoInsumoNegocio negocioTipo = new TipoInsumoNegocio();
-                negocioTipo.inactivar(id);
+
+                if (e.CommandName == "InactivarTipo")
+                    negocioTipo.inactivar(id);
+                else
+                    negocioTipo.activar(id);
+
                 Response.Redirect("TiposInsumoLista.aspx", false);
             }
             catch (Exception ex)
