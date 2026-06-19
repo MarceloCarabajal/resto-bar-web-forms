@@ -11,6 +11,8 @@ namespace resto_bar_web
 {
     public partial class InsumosLista
     {
+        protected global::System.Web.UI.WebControls.Panel pnlMensaje;
+        protected global::System.Web.UI.WebControls.Literal litMensaje;
         protected global::System.Web.UI.WebControls.GridView dgvInsumos;
     }
 }
