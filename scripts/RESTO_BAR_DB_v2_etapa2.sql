@@ -135,6 +135,22 @@ BEGIN
 END
 GO
 
+CREATE OR ALTER PROCEDURE sp_activar_tipo_insumo
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF NOT EXISTS (SELECT 1 FROM TiposInsumo WHERE Id = @Id)
+    BEGIN
+        RAISERROR(N'Tipo de insumo inexistente.', 16, 1);
+        RETURN;
+    END
+
+    UPDATE TiposInsumo SET Activo = 1 WHERE Id = @Id;
+END
+GO
+
 /* =============================================================================
    STORED PROCEDURES - USUARIOS (ABM Melanie)
    ============================================================================= */
