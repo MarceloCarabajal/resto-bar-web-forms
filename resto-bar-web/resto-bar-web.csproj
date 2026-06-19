@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="InsumoForm.aspx" />
     <Content Include="InsumosLista.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MesasPedidos.aspx" />
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InsumoForm.aspx.cs">
+      <DependentUpon>InsumoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InsumoForm.aspx.designer.cs">
+      <DependentUpon>InsumoForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="InsumosLista.aspx.cs">
       <DependentUpon>InsumosLista.aspx</DependentUpon>

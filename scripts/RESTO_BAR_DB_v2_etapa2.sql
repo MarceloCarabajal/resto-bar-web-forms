@@ -152,6 +152,36 @@ END
 GO
 
 /* =============================================================================
+   STORED PROCEDURES - INSUMOS (ABM Marcelo)
+   ============================================================================= */
+
+CREATE OR ALTER PROCEDURE sp_activar_insumo
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF NOT EXISTS (SELECT 1 FROM Insumos WHERE Id = @Id)
+    BEGIN
+        RAISERROR(N'Insumo inexistente.', 16, 1);
+        RETURN;
+    END
+
+    IF EXISTS (
+        SELECT 1 FROM Insumos i
+        INNER JOIN TiposInsumo t ON t.Id = i.IdTipoInsumo
+        WHERE i.Id = @Id AND t.Activo = 0
+    )
+    BEGIN
+        RAISERROR(N'No se puede activar: el tipo de insumo esta inactivo.', 16, 1);
+        RETURN;
+    END
+
+    UPDATE Insumos SET Activo = 1 WHERE Id = @Id;
+END
+GO
+
+/* =============================================================================
    STORED PROCEDURES - USUARIOS (ABM Melanie)
    ============================================================================= */
 
