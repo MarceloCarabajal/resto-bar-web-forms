@@ -44,7 +44,8 @@ CREATE TABLE Usuarios (
 
 CREATE TABLE TiposInsumo (
     Id          INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    Nombre      VARCHAR(50) NOT NULL UNIQUE
+    Nombre      VARCHAR(50) NOT NULL UNIQUE,
+    Activo      BIT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE Insumos (
