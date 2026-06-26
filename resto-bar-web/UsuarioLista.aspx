@@ -2,32 +2,47 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Listado de Usuarios</h2>
-    <hr />
+    <div class= "container mt-4"></div>
+    <h2>Usuarios</h2>
+     <p>Administración de los usuarios del sistema.</p>
 
-    <asp:GridView ID="dgvUsuarios" runat="server" CssClass="table table-striped" AutoGenerateColumns="false" OnRowCommand="dgvUsuarios_RowCommand" >
+    <div class ="mb-3">
+        <a href="UsuarioForm.aspx" class="btn btn-primary">Agregar Usuario</a>
+     </div>
+
+    <asp:GridView ID="dgvUsuarios" runat="server" DataKeyNames="Id" ShowHeaderWhenEmpty="true" EnableViewState="true" CssClass="table table-striped"
+        AutoGenerateColumns="false" OnRowCommand="dgvUsuarios_RowCommand" EmptyDataText="No hay usuarios registrados." >
      <Columns>
+        
          <asp:BoundField HeaderText="Id" DataField="Id" />
         <asp:BoundField HeaderText="UserName" DataField="UserName" />
         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
         <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-        
+       
+        <asp:TemplateField HeaderText="Estado">
+    <ItemTemplate>
+        <asp:Label runat="server" 
+            Text='<%# (bool)Eval("Activo") ? "Activo" : "Inactivo" %>'>
+        </asp:Label>
+    </ItemTemplate>
+</asp:TemplateField>
        
         <asp:TemplateField HeaderText="Acciones">
             <ItemTemplate>
-            <asp:Button ID="btnEditar" runat="server" Text="Editar" 
-            CommandArgument='<%#Eval("Id")%>'
-            CommandName="Modificar" CssClass="btn btn-primary btn-sm" />
+            <a class="btn btn-sm btn-outline-primary me-2" href='UsuarioForm.aspx?id=<%# Eval("Id") %>'>Editar</a>
            
-            <asp:Button ID="btnInactivar" runat="server" Text="Inactivar" 
-            CommandArgument='<%#Eval("Id")%>' 
-            CommandName="Inactivar" CssClass="btn btn-danger btn-sm" />
-                
-            </ItemTemplate>
+            <asp:LinkButton ID="btnEstado" runat="server" 
+             CommandName='<%# (bool)Eval("Activo") ? "Inactivar" : "Activar" %>' 
+             CommandArgument='<%# Eval("Id") %>'
+             Text='<%# (bool)Eval("Activo") ? "Inactivar" : "Activar" %>'
+             CssClass='<%# (bool)Eval("Activo") ? "btn btn-sm btn-outline-danger" : "btn btn-sm btn-outline-success" %>'
+             OnClientClick='<%# (bool)Eval("Activo") ? "return confirm(\"¿Desea inactivar este usuario?\");" : "return confirm(\"¿Desea activar este usuario?\");" %>'>
+         </asp:LinkButton>
+            
+
+          </ItemTemplate>
         </asp:TemplateField>
     </Columns>
-        
-    </asp:GridView>
-    <a href="UsuarioForm.aspx" class="btn btn-primary">Agregar Usuario</a>
-
+  </asp:GridView>
+ </div>
 </asp:Content>

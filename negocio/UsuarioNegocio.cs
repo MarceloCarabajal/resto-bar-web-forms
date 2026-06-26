@@ -104,7 +104,8 @@ namespace negocio
                 {
                     Rol aux = new Rol();
                     aux.Id = (int)datos.Lector["Id"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
+                   aux.Nombre = (string)datos.Lector["Nombre"];
+                  
 
                     lista.Add(aux);
                 }
@@ -171,7 +172,16 @@ namespace negocio
                 datos.setearParametro("@Clave", user.Clave);
                 datos.setearParametro("@Nombre", user.Nombre);
                 datos.setearParametro("@Apellido", user.Apellido);
-                datos.setearParametro("@IdRol", user.Rol.Id);
+
+                if (user.Rol != null)
+                {
+                    datos.setearParametro("@IdRol", user.Rol.Id);
+                }
+                else
+                {
+
+                    datos.setearParametro("@IdRol", 1);
+                }
 
                 datos.ejecutarAccion();
             }
@@ -194,7 +204,29 @@ namespace negocio
             {
                 datos.setearProcedimiento("sp_inactivar_usuario");
                 datos.setearParametro("@Id", id);
+                datos.ejecutarAccion();
+               
 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public void activar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("sp_activar_usuario");
+                datos.setearParametro("@Id", id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -206,6 +238,7 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
     }
 
 }

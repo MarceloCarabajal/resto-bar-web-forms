@@ -16,18 +16,30 @@ namespace resto_bar_web
         {
             if (!IsPostBack)
             {
-                
                 cargarUsuarios();
-               
+
             }
+            
         }
 
         private void cargarUsuarios()
         {
-            UsuarioNegocio negocio = new UsuarioNegocio();
-            dgvUsuarios.DataSource = negocio.listar();
-            dgvUsuarios.DataBind();
+            try
+            {
+              
 
+                UsuarioNegocio negocio = new UsuarioNegocio();
+                List<Usuario> lista = negocio.listar(false);
+
+                dgvUsuarios.DataSource = lista;
+                dgvUsuarios.DataBind();
+            }
+            catch (Exception ex)
+            {
+               
+                Response.Write("Error al cargar: " + ex.Message);
+            }
+            
         }
 
         protected void btnAgregar_Click(object sender , EventArgs e)
@@ -37,6 +49,7 @@ namespace resto_bar_web
 
         protected void dgvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            
             if (e.CommandName == "Modificar")
             {
                
@@ -46,16 +59,25 @@ namespace resto_bar_web
                 Response.Redirect("UsuarioForm.aspx?id=" + id);
             }
 
-            else if (e.CommandName == "Inactivar")
+             if (e.CommandName == "Activar" || e.CommandName == "Inactivar")
             {
                 int id = int.Parse(e.CommandArgument.ToString());
+
                 UsuarioNegocio negocio = new UsuarioNegocio();
 
-                
-                negocio.inactivar(id);
+              
+                if (e.CommandName == "Activar")
+                {
+                    negocio.activar(id); 
+                }
+                else 
+                {
+                    negocio.inactivar(id);
+                }
 
-                
-                cargarUsuarios();
+
+                Response.Redirect("UsuarioLista.aspx", false);
+        
             }
 
         }
