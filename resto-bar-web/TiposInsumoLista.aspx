@@ -27,8 +27,8 @@
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
                     <a class="btn btn-sm btn-outline-primary me-2" href='<%# "TipoInsumoForm.aspx?id=" + Eval("Id") %>'>Editar</a>
-                    <asp:LinkButton ID="btnInactivar" runat="server" CssClass="btn btn-sm btn-outline-danger" CommandName="InactivarTipo" CommandArgument='<%# Eval("Id") %>' Visible='<%# (bool)Eval("Activo") %>' OnClientClick="return confirm('Seguro que queres inactivar este tipo de insumo?');">Inactivar</asp:LinkButton>
-                    <asp:LinkButton ID="btnActivar" runat="server" CssClass="btn btn-sm btn-outline-success" CommandName="ActivarTipo" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Activo") %>' OnClientClick="return confirm('Seguro que queres activar este tipo de insumo?');">Activar</asp:LinkButton>
+                    <asp:LinkButton ID="btnInactivar" runat="server" CssClass="btn btn-sm btn-outline-danger" CommandName="InactivarTipo" CommandArgument='<%# Eval("Id") %>' Visible='<%# (bool)Eval("Activo") %>' data-confirm-message="Seguro que queres inactivar este tipo de insumo?">Inactivar</asp:LinkButton>
+                    <asp:LinkButton ID="btnActivar" runat="server" CssClass="btn btn-sm btn-outline-success" CommandName="ActivarTipo" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Activo") %>' data-confirm-message="Seguro que queres activar este tipo de insumo?">Activar</asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

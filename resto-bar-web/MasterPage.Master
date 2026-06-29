@@ -51,6 +51,77 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
+
+        <div class="modal fade" id="confirmacionModal" tabindex="-1" aria-labelledby="confirmacionModalTitulo" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmacionModalTitulo">Confirmar accion</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="confirmacionModalMensaje" class="mb-0"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="btnConfirmarAccion">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var modalElemento = document.getElementById('confirmacionModal');
+                var mensajeElemento = document.getElementById('confirmacionModalMensaje');
+                var btnConfirmar = document.getElementById('btnConfirmarAccion');
+                var accionPendiente = null;
+                var confirmacionAprobada = false;
+
+                if (!modalElemento || !mensajeElemento || !btnConfirmar || typeof bootstrap === 'undefined') {
+                    return;
+                }
+
+                var confirmacionModal = new bootstrap.Modal(modalElemento);
+
+                document.addEventListener('click', function (event) {
+                    var boton = event.target.closest('[data-confirm-message]');
+
+                    if (!boton) {
+                        return;
+                    }
+
+                    if (confirmacionAprobada) {
+                        confirmacionAprobada = false;
+                        return;
+                    }
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    accionPendiente = boton;
+                    mensajeElemento.textContent = boton.getAttribute('data-confirm-message');
+                    confirmacionModal.show();
+                });
+
+                btnConfirmar.addEventListener('click', function () {
+                    if (!accionPendiente) {
+                        return;
+                    }
+
+                    confirmacionAprobada = true;
+                    confirmacionModal.hide();
+                    accionPendiente.click();
+                    accionPendiente = null;
+                });
+
+                modalElemento.addEventListener('hidden.bs.modal', function () {
+                    if (!confirmacionAprobada) {
+                        accionPendiente = null;
+                    }
+                });
+            });
+        </script>
     </form>
 </body>
 </html>
