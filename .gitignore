@@ -40,3 +40,5 @@ _ReSharper*/
 node_modules/
 .env
 *.env
+/resto-bar-web/resto-bar-web.csproj.user
+

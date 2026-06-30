@@ -30,6 +30,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="TiposInsumoLista.aspx">Tipos de insumo</a>
                             </li>
+                            <li id="menuUsuarios" runat="server" class="nav-item" >
+                               <a class="nav-link" href="UsuarioLista.aspx">Usuarios</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="MesasPedidos.aspx">Mesas/Pedidos</a>
                             </li>
