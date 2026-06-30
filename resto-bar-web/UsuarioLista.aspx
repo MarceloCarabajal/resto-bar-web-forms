@@ -37,13 +37,8 @@
             <ItemTemplate>
             <a class="btn btn-sm btn-outline-primary me-2" href='UsuarioForm.aspx?id=<%# Eval("Id") %>'>Editar</a>
            
-            <asp:LinkButton ID="btnEstado" runat="server" 
-             CommandName="Estado"
-             CommandArgument='<%# Eval("Id") %>'
-             Text='<%# (bool)Eval("Activo") ? "Inactivar" : "Activar" %>'
-             CssClass='<%# (bool)Eval("Activo") ? "btn btn-sm btn-outline-danger" : "btn btn-sm btn-outline-success" %>'
-             data-confirm-message='<%# (bool)Eval("Activo") ? "¿Desea inactivar este usuario?" : "¿Desea activar este usuario?" %>'>
-         </asp:LinkButton>
+            <asp:LinkButton ID="btnInactivar" runat="server" CssClass="btn btn-sm btn-outline-danger" CommandName="Inactivar" CommandArgument='<%# Eval("Id") %>' Visible='<%# (bool)Eval("Activo") %>' data-confirm-message="¿Desea inactivar este usuario?">Inactivar</asp:LinkButton>
+            <asp:LinkButton ID="btnActivar" runat="server" CssClass="btn btn-sm btn-outline-success" CommandName="Activar" CommandArgument='<%# Eval("Id") %>' Visible='<%# !(bool)Eval("Activo") %>' data-confirm-message="¿Desea activar este usuario?">Activar</asp:LinkButton>
             
 
           </ItemTemplate>
