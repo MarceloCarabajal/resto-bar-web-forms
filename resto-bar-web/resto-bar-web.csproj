@@ -76,6 +76,8 @@
     <Content Include="Reportes.aspx" />
     <Content Include="TipoInsumoForm.aspx" />
     <Content Include="TiposInsumoLista.aspx" />
+    <Content Include="UsuarioForm.aspx" />
+    <Content Include="UsuarioLista.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +147,20 @@
     </Compile>
     <Compile Include="TiposInsumoLista.aspx.designer.cs">
       <DependentUpon>TiposInsumoLista.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioForm.aspx.cs">
+      <DependentUpon>UsuarioForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioForm.aspx.designer.cs">
+      <DependentUpon>UsuarioForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioLista.aspx.cs">
+      <DependentUpon>UsuarioLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioLista.aspx.designer.cs">
+      <DependentUpon>UsuarioLista.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
