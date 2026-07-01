@@ -73,6 +73,7 @@
     <Content Include="InsumosLista.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MesaForm.aspx" />
+    <Content Include="MesasAsignacion.aspx" />
     <Content Include="MesasLista.aspx" />
     <Content Include="MesasPedidos.aspx" />
     <Content Include="Reportes.aspx" />
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="MesaForm.aspx.designer.cs">
       <DependentUpon>MesaForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MesasAsignacion.aspx.cs">
+      <DependentUpon>MesasAsignacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MesasAsignacion.aspx.designer.cs">
+      <DependentUpon>MesasAsignacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="MesasLista.aspx.cs">
       <DependentUpon>MesasLista.aspx</DependentUpon>
