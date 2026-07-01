@@ -72,6 +72,9 @@
     <Content Include="InsumoForm.aspx" />
     <Content Include="InsumosLista.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MesaForm.aspx" />
+    <Content Include="MesasAsignacion.aspx" />
+    <Content Include="MesasLista.aspx" />
     <Content Include="MesasPedidos.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="TipoInsumoForm.aspx" />
@@ -125,6 +128,27 @@
     </Compile>
     <Compile Include="MesasPedidos.aspx.designer.cs">
       <DependentUpon>MesasPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MesaForm.aspx.cs">
+      <DependentUpon>MesaForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MesaForm.aspx.designer.cs">
+      <DependentUpon>MesaForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MesasAsignacion.aspx.cs">
+      <DependentUpon>MesasAsignacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MesasAsignacion.aspx.designer.cs">
+      <DependentUpon>MesasAsignacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MesasLista.aspx.cs">
+      <DependentUpon>MesasLista.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MesasLista.aspx.designer.cs">
+      <DependentUpon>MesasLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes.aspx.cs">
