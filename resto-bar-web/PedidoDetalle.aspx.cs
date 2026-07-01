@@ -149,7 +149,7 @@ namespace resto_bar_web
 
                 litTitulo.Text = "Pedido #" + pedido.Id + " - Mesa " + pedido.NumeroMesa;
                 litResumen.Text = "Mesero: " + Server.HtmlEncode(pedido.Mesero) + " | Estado: " + Server.HtmlEncode(pedido.Estado);
-                litTotal.Text = pedido.Total.ToString("C", CultureInfo.CurrentCulture);
+                litTotal.Text = "$ " + pedido.Total.ToString("N2", CultureInfo.CurrentCulture);
 
                 bool abierto = pedido.Estado == "Abierto";
                 pnlCargaItem.Visible = abierto;

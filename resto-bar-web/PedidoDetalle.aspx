@@ -44,8 +44,8 @@
         <Columns>
             <asp:BoundField DataField="Insumo.Nombre" HeaderText="Insumo" />
             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
-            <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio unitario" DataFormatString="{0:C}" />
-            <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" DataFormatString="{0:C}" />
+            <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio unitario" DataFormatString="$ {0:N2}" />
+            <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" DataFormatString="$ {0:N2}" />
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
                     <asp:LinkButton ID="btnEliminarItem" runat="server" CssClass="btn btn-sm btn-outline-danger" Text="Eliminar"
