@@ -32,6 +32,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Elemento.cs" />
@@ -39,6 +43,8 @@
     <Compile Include="ItemPedido.cs" />
     <Compile Include="Mesa.cs" />
     <Compile Include="Pedido.cs" />
+    <Compile Include="ReportePorMesa.cs" />
+    <Compile Include="ReportePorMesero.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="TipoInsumo.cs" />
     <Compile Include="Usuario.cs" />
