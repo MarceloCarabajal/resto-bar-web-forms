@@ -76,6 +76,7 @@
     <Content Include="MesasAsignacion.aspx" />
     <Content Include="MesasLista.aspx" />
     <Content Include="MesasPedidos.aspx" />
+    <Content Include="PedidoDetalle.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="TipoInsumoForm.aspx" />
     <Content Include="TiposInsumoLista.aspx" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="MesasPedidos.aspx.designer.cs">
       <DependentUpon>MesasPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PedidoDetalle.aspx.cs">
+      <DependentUpon>PedidoDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PedidoDetalle.aspx.designer.cs">
+      <DependentUpon>PedidoDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="MesaForm.aspx.cs">
       <DependentUpon>MesaForm.aspx</DependentUpon>
