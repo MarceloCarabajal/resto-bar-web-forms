@@ -29,7 +29,7 @@ namespace resto_bar_web
 
                     if (usuario.Rol.Nombre == "Gerente")
                     {
-                        Response.Redirect("~/InsumosLista.aspx",false);
+                        Response.Redirect("~/Default.aspx", false);
                     }
                     else
                     {
