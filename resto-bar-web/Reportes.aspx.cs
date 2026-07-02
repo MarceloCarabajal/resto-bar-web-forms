@@ -9,8 +9,8 @@ namespace resto_bar_web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["usuario"] == null || !((Usuario)Session["usuario"]).EsGerente)
-            //    Response.Redirect("Login.aspx", false);
+            if (Session["usuario"] == null || !((Usuario)Session["usuario"]).EsGerente)
+                Response.Redirect("Login.aspx", false);
 
             if (!IsPostBack)
             {
