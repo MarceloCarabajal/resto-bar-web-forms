@@ -29,53 +29,50 @@ namespace resto_bar_web
 
                     if (usuario.Rol.Nombre == "Gerente")
                     {
-                        Response.Redirect("~/InsumosLista.aspx");
+                        Response.Redirect("~/InsumosLista.aspx",false);
                     }
                     else
                     {
-                        Response.Redirect("~/MesasPedidos.aspx");
+                        Response.Redirect("~/MesasPedidos.aspx", false);
                     }
                 }
                 else
                 {
-                    string script = "setTimeout(function() { " +
-                    "   var txtMensaje = document.getElementById('confirmacionModalMensaje'); " +
-                    "   var txtTitulo = document.getElementById('confirmacionModalTitulo'); " +
-                    "   if(txtMensaje) txtMensaje.textContent = 'Usuario, contraseña incorrectos o cuenta inactiva.'; " +
-                    "   if(txtTitulo) txtTitulo.textContent = 'Error de Ingreso'; " +
-                    "   var modalElemento = document.getElementById('confirmacionModal'); " +
-                    "   if(modalElemento) { " +
-                    "       var miModal = bootstrap.Modal.getOrCreateInstance(modalElemento); " +
-                    "       miModal.show(); " +
-                    "   } " +
-                    "}, 100);"; 
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "PopErrorModal", script, true);
+                    txtUsuario.Text = "";
+                    txtClave.Text = "";
+
+                    string script = @"
+        var modalElemento = document.getElementById('confirmacionModal');
+        var modal = new bootstrap.Modal(modalElemento);
+        document.getElementById('confirmacionModalMensaje').textContent = 'Usuario o contraseña incorrectos.';
+        document.getElementById('confirmacionModalTitulo').textContent = 'Error de Ingreso';
+        
+        var btnAceptar = document.getElementById('btnConfirmarAccion');
+        btnAceptar.onclick = function() { 
+            modal.hide(); 
+        };
+        var btnCancelar = modalElemento.querySelector('.btn-secondary');
+        if(btnCancelar) { btnCancelar.onclick = function() { modal.hide(); }; }
+        var btnCerrarX = modalElemento.querySelector('.btn-close');
+        if(btnCerrarX) { btnCerrarX.onclick = function() { modal.hide(); }; }
+        
+        modal.show();";
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowError", script, true);
+
+                    return;
                 }
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex.ToString());
-
-
-                string mensajeError = "Ocurrió un error en el sistema: " + ex.Message.Replace("'", "\\'").Replace("\r", "").Replace("\n", "");
-
-
-                string scriptCatch = "setTimeout(function() { " +
-                                     "   var txtMensaje = document.getElementById('confirmacionModalMensaje'); " +
-                                     "   var txtTitulo = document.getElementById('confirmacionModalTitulo'); " +
-                                     "   if(txtMensaje) txtMensaje.textContent = '" + mensajeError + "'; " +
-                                     "   if(txtTitulo) txtTitulo.textContent = 'Error del Sistema'; " +
-                                     "   var modalElemento = document.getElementById('confirmacionModal'); " +
-                                     "   if(modalElemento) { " +
-                                     "       var miModal = bootstrap.Modal.getOrCreateInstance(modalElemento); " +
-                                     "       miModal.show(); " +
-                                     "   } " +
-                                     "}, 100);";
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "PopErrorCatch", scriptCatch, true);
+                txtUsuario.Text = "";
+                txtClave.Text = "";
+                string script = "var miModal = new bootstrap.Modal(document.getElementById('errorModal')); miModal.show();";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "PopErrorCatch", script, true);
             }
         }
+
 
     }
 }

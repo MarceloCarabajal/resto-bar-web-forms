@@ -33,18 +33,24 @@ namespace resto_bar_web
                 string rol = Session["Rol"]?.ToString();
                 lblUsuarioLogueado.Text = user.Nombre + " (" + rol + ")";
 
-              
+                menuLogin.Visible = false;
+
                 if (rol == "Gerente")
                 {
                     MostrarMenusGerente();
                 }
                 else if (rol == "Mesero")
                 {
-                    
-                    if (paginaActual == "UsuarioForm.aspx" || paginaActual == "UsuarioLista.aspx" || paginaActual == "InsumoForm.aspx" || paginaActual == "Reportes.aspx" || paginaActual == "InsumosLista.aspx" || paginaActual == "TiposInsumoForm.aspx")
-                
+
+                    List<string> paginasProhibidas = new List<string> {
+                   "UsuarioForm.aspx", "UsuarioLista.aspx", "InsumoForm.aspx",
+                   "Reportes.aspx", "InsumosLista.aspx", "TiposInsumoForm.aspx",
+                   "MesaForm.aspx", "MesasLista.aspx","tipoInsumoLista.aspx","MesasAsignacion.aspx"
+                  };
+
+                    if (paginasProhibidas.Any(p => paginaActual.Equals(p, StringComparison.OrdinalIgnoreCase)))
                     {
-                        Response.Redirect("Default.aspx");
+                        Response.Redirect("MesasPedidos.aspx");
                         Response.End();
                     }
                     MostrarMenusMesero();
@@ -77,15 +83,15 @@ namespace resto_bar_web
             menuAsignacion.Visible = true;
             menuReportes.Visible = true;
             menuInicio.Visible = true; 
-            menuLogin.Visible = true;
+         
         }
 
         private void MostrarMenusMesero()
         {
-            menuMesas.Visible = true;
-            menuAsignacion.Visible = true;
+           
+            menuAsignacion.Visible = false;
             menuMesasPedidos.Visible = true; 
-            menuLogin.Visible = true;
+        
         }
 
         protected void lnkCerrarSesion_Click(object sender, EventArgs e)
