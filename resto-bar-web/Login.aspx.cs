@@ -68,7 +68,7 @@ namespace resto_bar_web
             {
                 txtUsuario.Text = "";
                 txtClave.Text = "";
-                string script = "var miModal = new bootstrap.Modal(document.getElementById('errorModal')); miModal.show();";
+                string script = "var miModal = new bootstrap.Modal(document.getElementById('confirmacionModal')); miModal.show();";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PopErrorCatch", script, true);
             }
         }

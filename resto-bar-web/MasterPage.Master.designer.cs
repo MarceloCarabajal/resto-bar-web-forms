@@ -123,13 +123,13 @@ namespace resto_bar_web
         protected global::System.Web.UI.WebControls.Label lblUsuarioLogueado;
 
         /// <summary>
-        /// Control LinkButton1.
+        /// Control LnkCerrarSesion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton LnkCerrarSesion;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

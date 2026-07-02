@@ -54,7 +54,7 @@
                             <asp:Label ID="lblUsuarioLogueado" runat="server" Text="" CssClass="me-3 text-dark fw-bold" ></asp:Label>
                             
                                
-                               <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-outline-danger btn-sm" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton>
+                               <asp:LinkButton ID="LnkCerrarSesion" runat="server" CssClass="btn btn-outline-danger btn-sm" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton>
                             </div>
 
                           

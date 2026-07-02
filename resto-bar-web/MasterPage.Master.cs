@@ -23,7 +23,15 @@ namespace resto_bar_web
                 Response.End();
             }
 
-            
+            if (Session["usuario"] == null)
+            {
+                LnkCerrarSesion.Visible = false;
+            }
+            else
+            {
+                LnkCerrarSesion.Visible = true;
+            }
+
             OcultarTodosLosMenus();
 
           
@@ -44,8 +52,8 @@ namespace resto_bar_web
 
                     List<string> paginasProhibidas = new List<string> {
                    "UsuarioForm.aspx", "UsuarioLista.aspx", "InsumoForm.aspx",
-                   "Reportes.aspx", "InsumosLista.aspx", "TiposInsumoForm.aspx",
-                   "MesaForm.aspx", "MesasLista.aspx","tipoInsumoLista.aspx","MesasAsignacion.aspx"
+                   "Reportes.aspx", "InsumosLista.aspx", "TipoInsumoForm.aspx",
+                   "MesaForm.aspx", "MesasLista.aspx","TiposInsumoLista.aspx","MesasAsignacion.aspx","Default.aspx"
                   };
 
                     if (paginasProhibidas.Any(p => paginaActual.Equals(p, StringComparison.OrdinalIgnoreCase)))
