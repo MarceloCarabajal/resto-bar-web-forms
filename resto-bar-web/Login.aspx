@@ -17,7 +17,7 @@
                 <label for="txtClave" class="form-label">Clave</label>
                 <asp:TextBox ID="txtClave" runat="server" CssClass="form-control" TextMode="Password" />
             </div>
-            <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" Enabled="false" />
-        </div>
+          <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" CausesValidation="false" UseSubmitBehavior="false"  />
+          </div>
     </div>
 </asp:Content>
