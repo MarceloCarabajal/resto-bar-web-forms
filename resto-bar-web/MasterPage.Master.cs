@@ -17,14 +17,17 @@ namespace resto_bar_web
             string paginaActual = System.IO.Path.GetFileName(Request.Url.AbsolutePath);
 
             
-            if (Session["usuario"] == null && paginaActual != "Login.aspx")
-            {
-                Response.Redirect("Login.aspx");
-                Response.End();
-            }
+      
 
             if (Session["usuario"] == null)
+
             {
+                if (paginaActual != "Login.aspx" && paginaActual != "Error.aspx")
+                {
+                    Response.Redirect("Login.aspx");
+                    Response.End();
+                }
+
                 LnkCerrarSesion.Visible = false;
             }
             else

@@ -12,12 +12,24 @@
             <div class="mb-3">
                 <label for="txtUsuario" class="form-label">Usuario</label>
                 <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" />
-            </div>
+            
+              <asp:RequiredFieldValidator ID="rfvUsuario" runat="server" 
+              ControlToValidate="txtUsuario" 
+              ErrorMessage ="El usuario es obligatorio" 
+              ForeColor="Red" Display="Dynamic" />
+           </div>
             <div class="mb-3">
                 <label for="txtClave" class="form-label">Clave</label>
                 <asp:TextBox ID="txtClave" runat="server" CssClass="form-control" TextMode="Password" />
-            </div>
-          <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" CausesValidation="false" UseSubmitBehavior="false"  />
-          </div>
+    <asp:RequiredFieldValidator ID="rfvPassword" runat="server" 
+    ControlToValidate="txtClave" 
+    ErrorMessage="La contraseña es obligatoria" 
+    ForeColor="Red" Display="Dynamic" />
+      </div>
+     <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" CausesValidation="true" UseSubmitBehavior="false"  />
+        <div class="mt-3">
+       <asp:Label ID="lblMensaje" runat="server" Text="" ForeColor="Red" />
+       </div>
+      </div>
     </div>
 </asp:Content>

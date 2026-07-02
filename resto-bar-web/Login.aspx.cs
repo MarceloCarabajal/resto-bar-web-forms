@@ -18,6 +18,13 @@ namespace resto_bar_web
         {
             try
             {
+
+                if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtClave.Text))
+                {
+                    lblMensaje.Text = "Por favor, completá ambos campos.";
+                    return;
+                }
+
                 UsuarioNegocio negocio = new UsuarioNegocio();
                 Usuario usuario = negocio.login(txtUsuario.Text, txtClave.Text);
 
