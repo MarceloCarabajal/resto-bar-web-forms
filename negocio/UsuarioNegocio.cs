@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -238,6 +240,47 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public Usuario login(string userName, string clave)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("sp_login");
+                datos.setearParametro("@UserName", userName);
+                datos.setearParametro("@Clave", clave);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Usuario aux = new Usuario();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.UserName = (string)datos.Lector["UserName"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Apellido = (string)datos.Lector["Apellido"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
+
+                    aux.Rol = new Rol();
+                    aux.Rol.Id = (int)datos.Lector["IdRol"];
+                    aux.Rol.Nombre = (string)datos.Lector["RolNombre"];
+
+                    return aux;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
     }
 

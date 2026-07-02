@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   
     <section class="mb-4">
         <h1 class="h2">Panel inicial</h1>
         <p class="text-secondary mb-0">Gestion de mesas, pedidos, insumos y reportes del restaurante.</p>
@@ -44,5 +45,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    
+        </div>
 </asp:Content>
